@@ -1,8 +1,8 @@
 // importing relevant modules
 import { Response, Request } from "express";
 import Flutterwave from "flutterwave-node-v3";
-import { defaultConfig } from "../config/config";
 
+import { defaultConfig } from "../config/config";
 import axios from "axios"
 
 const url = "https://min-api.cryptocompare.com/data/price?fsym=USDC&tsyms=NGN";
@@ -37,13 +37,13 @@ export const getRate = async (req: Request, res: Response) => {
 
 // Initialize a Bill payment transaction.
 export const initializeBillPayment = async (req: Request, res: Response) => {
+  const linkvaulturl = req.body.linkvaulturl;
+  console.log(linkvaulturl);
   const amount = req.body.amount;
   const rate = await USDCNGNRate();
   const amountUSD = Number((amount / rate).toFixed(2));
 
   try {
-   
-  
     const payload = {
       country: req.body.country,
       customer: req.body.customer,
@@ -55,6 +55,7 @@ export const initializeBillPayment = async (req: Request, res: Response) => {
 
     try {
       const response = await flw.Bills.create_bill(payload);
+      
 
       res.status(200).json({
         message: "Transaction Initialized.",
@@ -71,7 +72,7 @@ export const initializeBillPayment = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       error: {
-        message: "Couldn't initialize transaction."
+        message: "Couldn't initialize transaction from Linkvault."
       }
     });
   }
@@ -96,6 +97,7 @@ export const getBanks = async (req: Request, res: Response) => {
 };
 
 //Resolve Customers Account
+
 export const resolveAccount = async (req: Request, res: Response) => {
   try {
     const payload = req.body;
@@ -115,12 +117,12 @@ export const resolveAccount = async (req: Request, res: Response) => {
 
 // Initialize a Bill payment transaction.
 export const initializePayment = async (req: Request, res: Response) => {
-
   const amount = req.body.amount;
   const rate = await USDCNGNRate();
   const amountUSD = Number((amount / rate).toFixed(2));
 
   try {
+    
     const payload = {
       account_bank: req.body.account_bank, //This is the recipient bank code. Get list here :https://developer.flutterwave.com/v3.0/reference#get-all-banks
       account_number: req.body.account_number,
@@ -133,7 +135,7 @@ export const initializePayment = async (req: Request, res: Response) => {
     };
     try {
       const response = await flw.Transfer.initiate(payload);
-    
+   
       res.status(200).json({
         message: "Transaction Initialized.",
         data: response
@@ -149,11 +151,12 @@ export const initializePayment = async (req: Request, res: Response) => {
     console.error(error);
     res.status(500).json({
       error: {
-        message: "Couldn't initialize transaction."
+        message: "Couldn't initialize transaction from Linkvault."
       }
     });
   }
 };
+
 export const createInvoice=async (req:Request, res:Response) => {
     try {
       // Extract invoiceData from request body
