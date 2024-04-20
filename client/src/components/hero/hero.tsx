@@ -11,7 +11,7 @@ const Hero = () => {
                     Send money & <br className="break" /> pay bills in Africa 
                 </h3>
                 <div className="btnGo">
-                    <Button title="Go to App" onClick={() => navigate("/app")} />
+                    <Button title="Go to App" onClick={() => navigate("/dashboard")} />
                 </div>
                 <p className="powered">
                     powered by  <span className="voltage"> voltage cloud </span><img className="powerImg" src="/assets/lightning.png" alt="powered" />

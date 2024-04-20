@@ -14,7 +14,7 @@ const Footer = () => {
                     powered by  <span className="voltage"> voltage cloud </span><img className="powerImg" src="/assets/lightning.png" alt="powered" />
            </p>
             <p> 
-            <Button title="Get Started" onClick={() => navigate("/app")} />
+            <Button title="Get Started" onClick={() => navigate("/dashboard")} />
             </p>
        </Container>
     </Main>
