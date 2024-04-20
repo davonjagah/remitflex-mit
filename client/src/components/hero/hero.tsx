@@ -1,6 +1,7 @@
 import { Button } from "@/widgets/button"
 import { HeroContainer } from "./hero.styles";
 import { useNavigate } from "react-router-dom";
+import { ImageLazyLoad } from "@/widgets/image-loader";
 
 const Hero = () => {
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Hero = () => {
                 </p>
             </div>
             <div className="hero__right">
-                <img src="/assets/right.png" alt="hero" />
+                <ImageLazyLoad src="/assets/right.png" alt="hero" />
             </div>
         </HeroContainer>
     );

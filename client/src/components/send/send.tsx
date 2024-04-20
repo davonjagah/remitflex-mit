@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { banks } from "../../services/protected/banksAPI";
 import { paymentControl } from "../../services/protected/paymentAPI";
 import Select from "react-select";
-import { customStyles } from "@/utils/customSelectorHelper";
+import { customStyles } from "@/utils/select";
 import { commaFormat } from "@/utils/addons";
 import { useSelector } from "react-redux";
 import  { Spinner } from "@/widgets/spinner";
