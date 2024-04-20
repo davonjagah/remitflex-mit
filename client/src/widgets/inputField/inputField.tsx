@@ -1,5 +1,5 @@
-import { InputPropTypes } from "../../types/components.types";
-import { Container, ErrorText, Input, InputContainer, Label } from "./InputField.styles";
+import { InputPropTypes } from "@/types/components.types";
+import { Container, ErrorText, Input, InputContainer, Label } from "./inputField.styles";
 
 const InputField: React.FC<InputPropTypes> = ({
   name,

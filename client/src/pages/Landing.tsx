@@ -1,14 +1,14 @@
-import Body from "../../components/Body/Body";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header";
-import Hero from "../../components/Hero/Hero";
+import Hero from "@/components/hero";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import SplashSection from "@/components/splash-section";
 
 const LandingPage: () => JSX.Element = () => {
   return (
     <>
       <Header />
       <Hero />
-      <Body />
+      <SplashSection />
       <Footer />
     </>
   );
