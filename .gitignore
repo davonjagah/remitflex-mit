@@ -7,3 +7,5 @@ dist
 server/.env
 client/.env
 .DS_Store
+/server/config/config1.ts
+

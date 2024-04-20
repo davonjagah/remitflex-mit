@@ -1,6 +1,8 @@
 {
   "name": "remitflex",
   "version": "1.0.0",
+  "description": "Building Global remittance Platform powered by the Bitcoin lightning network and Zero hash",
+  "main": "index.js",
   "scripts": {
     "start" : "cd server && node dist/server.js",
     "heroku-postbuild": "cd server && npm install && npm run build",
