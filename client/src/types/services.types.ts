@@ -1,5 +1,4 @@
-export interface IRemitPayment {
-    linkvaulturl: string;
+export interface ICreateInvoice {
     account_bank: string;
     account_number: string;
     amount: number;
@@ -9,11 +8,9 @@ export interface IRemitPayment {
   }
   
   export interface IBillPayment {
-    linkvaulturl: string;
     country: string;
     customer: string;
     amount: number;
-    // amount_paid: number,
     recurrence: string;
     type: string;
   }

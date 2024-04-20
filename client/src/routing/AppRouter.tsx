@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { CustomHashLoader } from "@/widgets/hashloader";
 import Dashboard from "@/pages/Dashboard";
+import Processing from "@/components/send/processing";
 const LandingPage = lazy(() => import("@/pages/Landing"));
 const Bills = lazy(() => import("@/pages/Utilities"));
 const SendMoney = lazy(() => import("../pages/SendMoney"));
@@ -17,7 +18,8 @@ const AppRouter = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/products" element={<Bills />} />
           <Route path="/remit" element={<SendMoney />} />
-        <Route path="/services/pay" element={<ServicePay />} />
+          <Route path="/services/pay" element={<ServicePay />} />
+          <Route path="/processing" element={<Processing />} />
         </Routes>
       </Router>
     </Suspense>
