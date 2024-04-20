@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "dist": "tsc -p .",
-    "dev": "nodemon server.ts"
+    "dev": "nodemon server.ts",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
