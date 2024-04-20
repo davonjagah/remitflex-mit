@@ -37,8 +37,6 @@ export const getRate = async (req: Request, res: Response) => {
 
 // Initialize a Bill payment transaction.
 export const initializeBillPayment = async (req: Request, res: Response) => {
-  const linkvaulturl = req.body.linkvaulturl;
-  console.log(linkvaulturl);
   const amount = req.body.amount;
   const rate = await USDCNGNRate();
   const amountUSD = Number((amount / rate).toFixed(2));

@@ -20,7 +20,7 @@ paymentRouter.get("/rate", getRate);
 paymentRouter.post("/bill", initializeBillPayment);
 
 // Initialize new payment.
-paymentRouter.post("/remit", initializePayment);
+paymentRouter.get("/remit", initializePayment);
 
 //get banks
 paymentRouter.get("/banks", getBanks);

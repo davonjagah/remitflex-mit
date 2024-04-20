@@ -308,7 +308,7 @@ export const createBillInvoice=async (req:Request, res:Response) => {
       const amountUSD = Number((amount / rate).toFixed(2));
 
      // Construct URL with query parameters
-     const redirectUrl = `https://remitflex.com/api/v1/remit?country=${country}&customer=${customer}&amount=${amount}&amount_paid=${amount_paid}&recurrence=${recurrence}&type=${type}&reference=${reference}`;
+     const redirectUrl = `https://remitflex.com/api/v1/pay-bill?country=${country}&customer=${customer}&amount=${amount}&amount_paid=${amount_paid}&recurrence=${recurrence}&type=${type}&reference=${reference}`;
      const notificationUrl=`https://remitflex.com/processing`
   
       // Create invoiceData object

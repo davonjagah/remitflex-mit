@@ -7,6 +7,7 @@ import {
   paymentAgencies,
   amountToBePaid,
   createBill,
+  createBillInvoice,
   validateBill,
   getBillsPayment
 } from "../controllers/bill.controller";
@@ -15,7 +16,7 @@ import {
 const billRouter = express.Router();
 
 //making bill payments
-billRouter.get("/", createBill);
+billRouter.get("/remit-bill", createBill);
 
 // getting Bill Payments
 billRouter.post("/get-bills", getBillsPayment);
@@ -37,5 +38,7 @@ billRouter.post("/amount", amountToBePaid);
 
 //validate services like DSTV smartcard no, Meter number etc.
 billRouter.post("/validate", validateBill);
+
+billRouter.post("/invoice/create", createBillInvoice);
 
 export default billRouter;
