@@ -13,7 +13,7 @@ const headers = new Headers({
 
 const flw = new Flutterwave(defaultConfig.FLW_PUBLIC_KEY, defaultConfig.FLW_SECRET_KEY);
 
-const USDCNGNRate = async () => {
+export const USDCNGNRate = async () => {
   // Fetch USDC rate
   const result = await fetch(url, {
     method: "GET",
@@ -117,22 +117,19 @@ export const resolveAccount = async (req: Request, res: Response) => {
 
 // Initialize a Bill payment transaction.
 export const initializePayment = async (req: Request, res: Response) => {
-  const amount = req.body.amount;
-  const rate = await USDCNGNRate();
-  const amountUSD = Number((amount / rate).toFixed(2));
-
+    const { account_bank, account_number, amount, narration, currency, reference, callback_url, debit_currency } = req.query;
   try {
     
     const payload = {
-      account_bank: req.body.account_bank, //This is the recipient bank code. Get list here :https://developer.flutterwave.com/v3.0/reference#get-all-banks
-      account_number: req.body.account_number,
-      amount: req.body.amount,
-      narration: req.body.narration,
-      currency: req.body.currency,
-      reference: req.body.reference, //This is a merchant's unique reference for the transfer, it can be used to query for the status of the transfer
-      callback_url: req.body.callback_url,
-      debit_currency: req.body.debit_currency
-    };
+        account_bank: account_bank,
+        account_number: account_number,
+        amount: amount,
+        narration: narration,
+        currency: currency,
+        reference: reference,
+        callback_url: callback_url,
+        debit_currency: debit_currency
+      };
     try {
       const response = await flw.Transfer.initiate(payload);
    
@@ -151,7 +148,7 @@ export const initializePayment = async (req: Request, res: Response) => {
     console.error(error);
     res.status(500).json({
       error: {
-        message: "Couldn't initialize transaction from Linkvault."
+        message: "Couldn't initialize transaction"
       }
     });
   }
@@ -160,10 +157,16 @@ export const initializePayment = async (req: Request, res: Response) => {
 export const createInvoice=async (req:Request, res:Response) => {
     try {
       // Extract invoiceData from request body
-      const { amount, currency, notificationUrl, redirectUrl } = req.body;
+      const { account_bank, account_number, amount, narration, currency, reference, callback_url, debit_currency } = req.body;
+      const rate = await USDCNGNRate();
+      const amountUSD = Number((amount / rate).toFixed(2));
+
+     // Construct URL with query parameters
+     const redirectUrl = `https://remitflex.com/api/v1/remit?account_bank=${account_bank}&account_number=${account_number}&amount=${amount}&narration=${narration}&currency=${currency}&reference=${reference}&callback_url=${callback_url}&debit_currency=${debit_currency}`;
+     const notificationUrl=`https://remitflex.com/processing`
   
       // Create invoiceData object
-      const invoiceData = { amount, currency, notificationUrl, redirectUrl };
+      const invoiceData = { amountUSD, currency:"USD", notificationUrl, redirectUrl };
   
       // Authenticate with Basic Authentication
       const username = defaultConfig.USERNAME; // Replace with your BTCPay Server username

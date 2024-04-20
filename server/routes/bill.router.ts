@@ -15,7 +15,7 @@ import {
 const billRouter = express.Router();
 
 //making bill payments
-billRouter.post("/", createBill);
+billRouter.get("/", createBill);
 
 // getting Bill Payments
 billRouter.post("/get-bills", getBillsPayment);

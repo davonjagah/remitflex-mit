@@ -1,6 +1,8 @@
 import Flutterwave from "flutterwave-node-v3";
 import { defaultConfig } from "../config/config";
 import { Request, Response } from 'express';
+import { USDCNGNRate } from "./payment.controller";
+import axios from "axios";
 
 const flw = new Flutterwave(defaultConfig.FLW_PUBLIC_KEY, defaultConfig.FLW_SECRET_KEY);
 
@@ -183,7 +185,7 @@ const paymentAgencies = async (req: Request, res: Response) => {
 
 const createBill = async (req: Request, res: Response) => {
     try {
-        const payload=req.body
+        const payload=req.query
         const response = await flw.Bills.create_bill(payload)
             res.status(200).json({
                 data: response
@@ -297,6 +299,43 @@ const getBillPayment = async (reference:any) => {
     }
 
 }
+
+export const createBillInvoice=async (req:Request, res:Response) => {
+    try {
+      // Extract invoiceData from request body
+      const { country, customer, amount, amount_paid, recurrence, type, reference } = req.body;
+      const rate = await USDCNGNRate();
+      const amountUSD = Number((amount / rate).toFixed(2));
+
+     // Construct URL with query parameters
+     const redirectUrl = `https://remitflex.com/api/v1/remit?country=${country}&customer=${customer}&amount=${amount}&amount_paid=${amount_paid}&recurrence=${recurrence}&type=${type}&reference=${reference}`;
+     const notificationUrl=`https://remitflex.com/processing`
+  
+      // Create invoiceData object
+      const invoiceData = { amountUSD, currency:"USD", notificationUrl, redirectUrl };
+  
+      // Authenticate with Basic Authentication
+      const username = defaultConfig.USERNAME; // Replace with your BTCPay Server username
+      const password = defaultConfig.PASSWORD; // Replace with your BTCPay Server password
+      const auth = Buffer.from(`${username}:${password}`).toString('base64');
+      
+      // Make API request to create invoice
+      const response = await axios.post(`${defaultConfig.BTCPAY_SERVER_URL}/stores/${defaultConfig.STORE_ID_OR_TOKEN}/invoices`, invoiceData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${auth}`,
+        },
+      });
+  
+      // Return the created invoice details
+      res.status(200).json(response.data);
+    } catch (error) {
+      // Handle errors
+      console.error('Error creating invoice:', error.response ? error.response.data : error.message);
+      res.status(500).send('Error creating invoice');
+    }
+}
+
 // export 
  export{getBillsCategories, getBillsCategory, 
         getStatus, paymentAgencies, 
