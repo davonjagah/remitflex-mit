@@ -312,7 +312,7 @@ export const createBillInvoice=async (req:Request, res:Response) => {
      const notificationUrl=`https://remitflex.com/processing`
   
       // Create invoiceData object
-      const invoiceData = { amountUSD, currency:"USD", notificationUrl, redirectUrl };
+      const invoiceData = { amount:amountUSD.toString(), currency:"USD", notificationUrl, redirectUrl };
   
       // Authenticate with Basic Authentication
       const username = defaultConfig.USERNAME; // Replace with your BTCPay Server username
