@@ -1,11 +1,11 @@
-import Bills from "@/components/bills";
+import PayBill from "@/components/service-pay";
 import Header from "@/components/header";
 
 const BillsPage = () => {
   return (
-    <div className="bills">
+    <div className="service-pay">
       <Header />
-      <Bills />
+      <PayBill />
     </div>
   );
 };
