@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), viteTsconfigPaths()],
   resolve: {
     alias: {
-      "@": "./src",
+      "@": "/src",
     }
   }
 })

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Image, LogoWrapper, Text } from "./header.styles";
-import { WalletStatus } from "./WalletStatus";
 
 const Header: React.FC = () => {
 
