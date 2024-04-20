@@ -122,7 +122,6 @@ const Send = () => {
     setIsLoading(false);
     //@ts-ignore
     setTxId(payment?.data?.txId);
-
     handleNextStep();
   };
 
