@@ -29,6 +29,6 @@ paymentRouter.get("/banks", getBanks);
 paymentRouter.post("/account", resolveAccount);
 
 //create lightning invoice with BTC pay server
-paymentRouter.post('/invoice/create/', createInvoice)
+paymentRouter.post('/invoice/create', createInvoice)
 
 export default paymentRouter;
