@@ -4,10 +4,10 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "npx tsc",
     "dist": "tsc -p .",
     "dev": "nodemon server.ts",
-    "start": "node server.js"
+    "start": "node ./dist/server.js"
   },
   "author": "",
   "license": "ISC",
