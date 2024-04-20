@@ -10,8 +10,8 @@ import {
 import { Button } from "@/widgets/button";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { banks } from "../../services/protected/banksAPI";
-import { paymentControl } from "../../services/protected/paymentAPI";
+import { banks } from "@/services/protected/banksAPI";
+import { paymentControl } from "@/services/protected/paymentAPI";
 import Select from "react-select";
 import { customStyles } from "@/utils/select";
 import { commaFormat } from "@/utils/addons";
@@ -354,17 +354,6 @@ const Send = () => {
                   navigate("/dashboard");
                 }}
               />
-              {/* <p>
-                View transaction on{" "}
-                <a
-                  className="algo__link"
-                  href={`https://algoexplorer.io/tx/${txId}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  algoexplorer
-                </a>
-              </p> */}
             </div>
           )}
         </div>

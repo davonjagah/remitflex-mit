@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  client:
+    depends_on:
+      - server
+    build:
+      context: ./
+      dockerfile: ./client/Dockerfile
+    container_name: remitflex_frontend
+    volumes:
+      - "./client:/app"
+      - "/app/node_modules"
+    ports:
+      - '3000:3000'
+    working_dir: /app
+    stdin_open: true
+
+  server:
+    build:
+      context: ./
+      dockerfile: ./server/Dockerfile
+    container_name: remitflex-backend
+    volumes:
+      - "./server:/app"
+      - "/app/node_modules"
+    ports:
+      - '8000:8000'
+    working_dir: /app
+    stdin_open: true

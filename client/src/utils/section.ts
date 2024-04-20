@@ -1,6 +1,6 @@
 export  const Section = [
     {
-        header : "Fast",
+        header : "Lightning",
         image_url : "/assets/lightning.png",
         description : "Send money and pay bills to Africa with exceptional speed and convenience with lightning ⚡️.",
     },

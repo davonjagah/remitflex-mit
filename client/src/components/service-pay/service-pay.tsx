@@ -1,7 +1,4 @@
-//import useState from react
 import { useState, useMemo } from "react";
-
-//import custom styles from
 import {
   PayBillAmountIn,
   PayBillAmountInText,
@@ -16,20 +13,14 @@ import {
   PayBillLabel,
   PayBillSQLInText
 } from "./service-pay.styles";
-//import react phone put 2 library
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-//import select
 import Select from "react-select";
-//importing custom dropdown
-import { customStyles } from "@/utils/customSelectorHelper";
-// importing options from utils
-import { DropdownSelectType } from "../../types/components.types";
-// get service name
+import { customStyles } from "@/utils/select";
+import { DropdownSelectType } from "@/types/components.types";
 import { useLocation, useNavigate } from "react-router-dom";
-// react-redux
 import { RootState } from "@/store/store";
-import { billings } from "../../services/protected/billsAPI";
+import { billings } from "@/services/protected/billsAPI";
 import { useSelector } from "react-redux";
 import { Spinner } from "@/widgets/spinner";
 import { Button } from "@/widgets/button";
@@ -261,17 +252,6 @@ const PayBill = () => {
               navigate("/dashboard");
             }}
           />
-          {/* <p>
-            View transaction on{" "}
-            <a
-              className="algo__link"
-              href={`https://algoexplorer.io/tx/${txId}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              algoexplorer
-            </a>
-          </p> */}
         </div>
       )}
     </PayBillContainer>
