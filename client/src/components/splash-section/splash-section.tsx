@@ -5,7 +5,6 @@ import {
     Content,
     ContentWrapper,
     Header,
-    ImageDiv,
     LastSection,
     MainText,
     SecondTitle,

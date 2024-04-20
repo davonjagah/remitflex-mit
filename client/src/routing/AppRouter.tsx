@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { CustomHashLoader } from "@/widgets/hashloader";
+import Dashboard from "@/pages/Dashboard";
 const LandingPage = lazy(() => import("@/pages/Landing"));
 
 const AppRouter = () => {
@@ -10,6 +11,7 @@ const AppRouter = () => {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
     </Suspense>
