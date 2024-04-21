@@ -124,7 +124,8 @@ const Send = () => {
     handleNextStep();
     if(payment) {
         //@ts-ignore
-       return window.location.href = payment.checkoutLink;
+       return window.open(payment.checkoutLink, '_blank');
+
     }
 
     //@ts-ignore
