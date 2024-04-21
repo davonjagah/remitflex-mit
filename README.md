@@ -4,7 +4,7 @@
 
 <p align="center">
   <br>
-      <img src="https://i.postimg.cc/yYPT8RRd/Remit-Flex-page-0001.jpg" alt="system design"/>
+      <img src="https://i.postimg.cc/yYPT8RRd/Remit-Flex-page-0001.jpg" alt="system design" width="100%"/>
   <br>
 </p>
 
