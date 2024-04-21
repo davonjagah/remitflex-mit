@@ -2,7 +2,11 @@
 
 [RemitFlex](https://remitflex.com/)  Introducing RemitFlex, providing seamless remittances to Africa & beyond, with 10,000+ bill payment options. Powered by Voltage, Flutterwave, & Zerohash for secure transactions
 
-[![Remit-Flex-page-0001.jpg](https://i.postimg.cc/yYPT8RRd/Remit-Flex-page-0001.jpg)](https://postimg.cc/3dkGLdn5)
+<p align="center">
+  <br>
+      <img src="https://i.postimg.cc/yYPT8RRd/Remit-Flex-page-0001.jpg" alt="system design"/>
+  <br>
+</p>
 
 ## 🎉 About.
 
