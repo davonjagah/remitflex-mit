@@ -1,6 +1,6 @@
 ## 🚂 RemitFlex.
 
-[RemitFlex](https://remitflex.com/)  Introducing RemitFlex, providing seamless remittances to Africa & beyond, with 10,000+ bill payment options. Powered by Voltage, Flutterwave, & Zerohash for secure transactions
+[RemitFlex](https://remitflex.com/)  Introducing RemitFlex, providing seamless remittances to Africa & beyond, with 10,000+ bill payment options. Powered by Starknet, Flutterwave for secure transactions
 
 <p align="center">
   <br>
@@ -30,9 +30,7 @@
 - ReactJS - web framework.
 - TypeScript - for static typing.
 - Express - (remitflex engine).
-- Voltage Cloud
-- BTC Pay Server
-- Lightning Network 
+- Starknet - Starknet's native token and stablecoins  
 - docker - for containerizing and easy development.
 - Flutterwave SDK - payment gateway.
 - Styled-Components - for styling.
@@ -44,13 +42,13 @@
 * git clone the repository.
 
 ```
-  $ git clone git@github.com:davonjagah/remitflex-mit.git
+  $ git clone git@github.com:davonjagah/remitflex.git
 ```
 
-- go to `remitflex-mit` directory on your terminal
+- go to `remitflex` directory on your terminal
 
 ```
-  $ cd remitflex-mit
+  $ cd remitflex
 ```
 
 - set your `.env` for `client`, and `server`  folder.
